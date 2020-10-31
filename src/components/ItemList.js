@@ -1,5 +1,6 @@
 import React from 'react';
 import Item from './Item';
+import { connect } from 'react-redux';
 
 export const ItemList = (props) => (
     <div>
@@ -12,4 +13,12 @@ export const ItemList = (props) => (
             })
         }
     </div>
-)
+);
+
+const mapStateToProps = (state, dispatch) => {
+    return {
+        items : state.items
+    }
+}
+
+export default connect(mapStateToProps)(ItemList);
