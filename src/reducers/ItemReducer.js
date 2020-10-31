@@ -6,6 +6,8 @@ const itemReducer = (state = itemReducerDefault, action = {}) => {
             return state.concat(action.item)
         case 'SET_ITEM':
             return action.item
+        case 'REMOVE_ITEM':
+            return state.filter((item) => item.id !== action.id)
         default :
             return state;
     }

@@ -29,6 +29,7 @@ export const addItem = (item = {}) => ({
     item
 });
 
+
 export const startAddItem = (itemData = {}) => {
     return (dispatch, getState) => {
         const itemToAdd = {
@@ -37,7 +38,7 @@ export const startAddItem = (itemData = {}) => {
             value : itemData.value
         }
         
-        console.log('I was here');
+        // console.log('I was here');
         return new Promise (
             function () {
                 const itemsString = localStorage.getItem('items');
@@ -47,6 +48,32 @@ export const startAddItem = (itemData = {}) => {
             }
         ).then(
             dispatch(addItem(itemToAdd))
+        );
+    }
+}
+
+export const removeItem = (id) => ({
+    type : 'REMOVE_ITEM',
+    id
+});
+
+export const startRemoveItem = (id) => {
+    return (dispatch) => {
+        return new Promise (
+            function () {
+                const itemsString = localStorage.getItem('items');
+                const itemsInLocalStorage = JSON.parse(itemsString);
+                let updatedItems = [];
+                itemsInLocalStorage.filter((item) => {
+                    if(item.id !== id){
+                        updatedItems.push(item);
+                    }
+                });
+                console.log(updatedItems);
+                localStorage.setItem('items', JSON.stringify(updatedItems));
+            }
+        ).then(
+            dispatch(removeItem(id))
         );
     }
 }
