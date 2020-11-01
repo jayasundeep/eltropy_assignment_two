@@ -5,8 +5,8 @@ export default class ItemForm extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            description : "",
-            value : "",
+            description : this.props.item ? this.props.item.description : "",
+            value : this.props.item ? this.props.item.value : "",
             error : undefined
         }
     }
@@ -49,6 +49,9 @@ export default class ItemForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.onSubmit}>
+                <div>
+                    {this.state.error}
+                </div>
                 <input
                     placeholder='Enter Description (item name)'
                     type='text'
@@ -68,7 +71,7 @@ export default class ItemForm extends React.Component {
                     <button 
                         className="button" 
 
-                    > Add item </button>
+                    > {this.props.item ? 'save item' : 'Add item'} </button>
                 </div>
                 
             </form>

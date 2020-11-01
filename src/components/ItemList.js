@@ -5,19 +5,22 @@ import { connect } from 'react-redux';
 export const ItemList = (props) => (
     <div>
         {
-            props.items.length === 0 ?
+            props.itemsTolist.length === 0 ?
             <span> No items in store </span> 
             :
-            props.items.map((item) => {
-                return <Item item={item} key={item.id}/>
-            })
+            <div>
+                {props.itemsTolist.map((item) => {
+                    console.log(props);
+                    return <Item item={item} key={item.id}/>
+                })}
+            </div>
         }
     </div>
 );
 
-const mapStateToProps = (state, dispatch) => {
+const mapStateToProps = (state) => {
     return {
-        items : state.items
+        itemsTolist : state.items
     }
 }
 

@@ -69,11 +69,40 @@ export const startRemoveItem = (id) => {
                         updatedItems.push(item);
                     }
                 });
-                console.log(updatedItems);
+                // console.log(updatedItems);
                 localStorage.setItem('items', JSON.stringify(updatedItems));
             }
         ).then(
             dispatch(removeItem(id))
         );
+    }
+}
+
+export const editItem = (id, updates) => ({
+    type : 'EDIT_ITEM',
+    id,
+    updates
+})
+
+export const startEditItem = (id, itemToUpdate) => {
+    return (dispatch) => {
+        return new Promise (
+            function () {
+                const itemsString = localStorage.getItem('items');
+                const itemsInLocalStorage = JSON.parse(itemsString);
+                let updatedItems = itemsInLocalStorage.map((item) => {
+                    if(item.id === id){
+                        item.description = itemToUpdate.description;
+                        item.value = itemToUpdate.value;
+                    }
+                    return item;
+                });
+                // console.log(updatedItems);
+                localStorage.setItem('items', JSON.stringify(updatedItems));
+                // console.log(itemsInLocalStorage);
+            }
+        ).then(
+            dispatch(editItem(id, itemToUpdate))
+        )
     }
 }

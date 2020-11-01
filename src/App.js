@@ -1,9 +1,14 @@
 // import logo from './logo.svg';
-import AddItem from './components/AddItem';
-import ItemForm from './components/ItemForm';
-import ItemList from './components/ItemList';
 
+// import ItemForm from './components/ItemForm';
+import React from 'react';
+import EditItem from './components/EditItem'
+import Home from './components/Home';
 
+import { BrowserRouter, Router, Route, Switch } from 'react-router-dom'
+import { createBrowserHistory } from 'history';
+
+/*
 function App() {
   return (
     <div className="App">
@@ -13,5 +18,19 @@ function App() {
     </div>
   );
 }
+*/
+const history = createBrowserHistory();
+
+const App = () => (
+  <Router history={history}>
+        <div>
+            <h1> Hello! </h1>
+            <Switch>
+                <Route path='/' component={Home} exact={true} />
+                <Route path='/edit/:id' component={EditItem} />
+            </Switch>
+        </div>
+    </Router>
+)
 
 export default App;
