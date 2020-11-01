@@ -1,6 +1,7 @@
 import React from 'react';
 import Item from './Item';
 import { connect } from 'react-redux';
+import getVisibleItems from '../selectors/selectors';
 
 export const ItemList = (props) => (
     <div>
@@ -10,7 +11,6 @@ export const ItemList = (props) => (
             :
             <div>
                 {props.itemsTolist.map((item) => {
-                    console.log(props);
                     return <Item item={item} key={item.id}/>
                 })}
             </div>
@@ -19,8 +19,9 @@ export const ItemList = (props) => (
 );
 
 const mapStateToProps = (state) => {
+    // console.log(state);
     return {
-        itemsTolist : state.items
+        itemsTolist : getVisibleItems(state.items, state.filters) 
     }
 }
 
