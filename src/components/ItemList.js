@@ -7,7 +7,7 @@ export const ItemList = (props) => (
     <div>
         {
             props.itemsTolist.length === 0 ?
-            <span> No items in store </span> 
+            <span> No items </span> 
             :
             <div>
                 {props.itemsTolist.map((item) => {

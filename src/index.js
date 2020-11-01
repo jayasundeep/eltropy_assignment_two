@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 
 import createStore from './store/redux-store';
 import { startSetItem } from './actions/items'
-import { render } from '@testing-library/react';
 
 const reduxStore = createStore();
 

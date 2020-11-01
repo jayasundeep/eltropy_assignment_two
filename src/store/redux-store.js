@@ -6,7 +6,7 @@ import filterReducer from '../reducers/filterReducer';
 
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export default () => {
+const storeCreator = () => {
     const store = createStore (
         combineReducers({
             items : itemReducer,
@@ -17,3 +17,5 @@ export default () => {
     // composeEnhancers(applyMiddleware(thunk))
     return store;
 }
+
+export default storeCreator;

@@ -12,7 +12,7 @@ class AddItem extends React.Component {
     render(){
        return (
             <div>
-                <h2> Add Expense </h2>
+                <h3> Add Item </h3>
                 <ItemForm onSubmit={this.onSubmit}/>
             </div>
        );

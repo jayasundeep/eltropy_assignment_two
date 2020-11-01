@@ -67,7 +67,9 @@ export const startRemoveItem = (id) => {
                 itemsInLocalStorage.filter((item) => {
                     if(item.id !== id){
                         updatedItems.push(item);
+                        return true;
                     }
+                    return false;
                 });
                 // console.log(updatedItems);
                 localStorage.setItem('items', JSON.stringify(updatedItems));

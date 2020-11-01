@@ -5,7 +5,7 @@ import React from 'react';
 import EditItem from './components/EditItem'
 import Home from './components/Home';
 
-import { BrowserRouter, Router, Route, Switch } from 'react-router-dom'
+import { Router, Route, Switch } from 'react-router-dom'
 import { createBrowserHistory } from 'history';
 
 /*
@@ -24,7 +24,7 @@ const history = createBrowserHistory();
 const App = () => (
   <Router history={history}>
         <div>
-            <h1> Hello! </h1>
+            <h1> Item Cart </h1>
             <Switch>
                 <Route path='/' component={Home} exact={true} />
                 <Route path='/edit/:id' component={EditItem} />
